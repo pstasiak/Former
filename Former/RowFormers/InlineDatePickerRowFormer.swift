@@ -122,10 +122,12 @@ public class InlineDatePickerRowFormer<T: UITableViewCell where T: InlineDatePic
             displayLabel?.textColor = displayDisabledColor
         }
         isEditing = false
+        onEditingEnded?(self.date)
     }
     
     // MARK: Private
     
+    private final var onEditingEnded: (NSDate -> Void)?
     private final var onDateChanged: (NSDate -> Void)?
     private final var displayTextFromDate: (NSDate -> String)?
     private final var titleColor: UIColor?
