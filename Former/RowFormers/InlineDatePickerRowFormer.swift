@@ -49,6 +49,11 @@ public class InlineDatePickerRowFormer<T: UITableViewCell where T: InlineDatePic
         return self
     }
     
+    public final func onEditingEnded(handler: (NSDate -> Void)) -> Self {
+        onEditingEnded = handler
+        return self
+    }
+    
     public override func update() {
         super.update()
         
