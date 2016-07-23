@@ -49,6 +49,11 @@ public class InlineDatePickerRowFormer<T: UITableViewCell where T: InlineDatePic
         return self
     }
     
+    public final func onEditingStarted(handler: (Void -> Void)) -> Self {
+        onEditingStarted = handler
+        return self
+    }
+    
     public final func onEditingEnded(handler: (NSDate -> Void)) -> Self {
         onEditingEnded = handler
         return self
@@ -132,6 +137,7 @@ public class InlineDatePickerRowFormer<T: UITableViewCell where T: InlineDatePic
     
     // MARK: Private
     
+    private final var onEditingStarted: (Void -> Void)?
     private final var onEditingEnded: (NSDate -> Void)?
     private final var onDateChanged: (NSDate -> Void)?
     private final var displayTextFromDate: (NSDate -> String)?
