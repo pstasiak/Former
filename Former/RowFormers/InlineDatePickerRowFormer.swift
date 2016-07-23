@@ -115,6 +115,7 @@ public class InlineDatePickerRowFormer<T: UITableViewCell where T: InlineDatePic
             _ = displayEditingColor.map { displayLabel?.textColor = $0 }
             isEditing = true
         }
+        onEditingStarted?()
     }
     
     public func editingDidEnd() {
