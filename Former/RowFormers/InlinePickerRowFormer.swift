@@ -54,6 +54,12 @@ public class InlinePickerRowFormer<T: UITableViewCell, S where T: InlinePickerFo
         return self
     }
     
+    public final func onEditingEnded(handler: (InlinePickerItem<S> -> Void)) -> Self {
+        onEditingEnded = handler
+        return self
+    }
+
+    
     public override func update() {
         super.update()
         
@@ -138,10 +144,12 @@ public class InlinePickerRowFormer<T: UITableViewCell, S where T: InlinePickerFo
             titleLabel?.textColor = titleDisabledColor
             displayLabel?.textColor = displayDisabledColor
         }
+        onEditingEnded?(pickerItems[selectedRow])
     }
     
     // MARK: Private
     
+    private final var onEditingEnded: (InlinePickerItem<S> -> Void)?
     private final var onValueChanged: (InlinePickerItem<S> -> Void)?
     private final var titleColor: UIColor?
     private final var displayTextColor: UIColor?
